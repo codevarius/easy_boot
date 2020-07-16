@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test task</title>
+    <style>
+        #logo, #input_form {
+            text-align: center;
+        }
+
+        #logo_img {
+            border-radius: 10px;
+        }
+
+        #err_message {
+            color: #ff0000;
+        }
+    </style>
+</head>
+<body>
+<div id="logo">
+    <img id="logo_img" src="icon.png" alt="skbx_logo"/>
+</div>
+<br>
+<div id="input_form">
+    <!--/*@thymesVar id="inputForm" type="org.example.test.project.easy_boot.dto.InputForm"*/-->
+    <form method="post" action="#" th:action="@{/easy_boot}" th:object="${inputForm}">
+        <label>
+            <input type="text" placeholder="enter data" th:field="*{data}">
+        </label>
+        <button type="submit">save</button>
+        <br>
+        <h3 id="err_message" th:if="${#fields.hasErrors('data')}">input is blank or missing length limits</h3>
+    </form>
+</div>
+</body>
+</html>
